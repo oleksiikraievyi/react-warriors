@@ -1,0 +1,16 @@
+.movie-item {
+    width : 200px;
+}
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color : white;   
+}
+
+.btn-liked {
+    background-color : blue;
+}
