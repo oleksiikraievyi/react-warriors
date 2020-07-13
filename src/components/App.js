@@ -5,25 +5,27 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-      
-        let movie = {
-            title : "Avengers : Endgame",
-            rating : 9.0,
-            overview : "Last movie in Avengers franchise",
-            image : "https://images-na.ssl-images-amazon.com/images/I/71tl2F9GRxL._AC_SL1000_.jpg"
-        };
 
         this.state = {
-            movie : movie
+            movies : props.movies
         };
     }
 
+    removeMovie = (movieId) => {
+        var updatedMovies = this.state.movies.filter(movie => movie.id !== movieId);
+        this.setState({ movies : updatedMovies });
+    }
+
     render() {
-        let { movie } = this.state;
+        let { movies } = this.state;
 
         return (
             <div>
-                <MovieItem data={movie}/>
+                {movies.map(movie => 
+                    <MovieItem 
+                    key={movie.id} 
+                    movie={movie}
+                    removeMovie={() => this.removeMovie(movie.id)} />)}
             </div>
         )
     }
